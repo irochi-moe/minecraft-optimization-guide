@@ -1,0 +1,16 @@
+name: 오류 제보
+description: 가이드 내용에 잘못된 점이 있다면 알려주세요!
+labels: [bug]
+body:
+    - type: textarea
+      attributes:
+          label: 문제가 되는 부분을 알려주세요!
+          description: 문제가 되는 단어, 문장 등을 복사해주세요!
+      validations:
+          required: true
+    - type: textarea
+      attributes:
+          label: 어떤 식으로 문제가 있나요?
+          description: 단어에 오타가 있나요? 틀린 내용이 있나요? 아니면 문장이 어색한가요!? 개선할 방향을 알려주세요!
+      validations:
+          required: true

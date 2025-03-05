@@ -1,0 +1,15 @@
+name: 내용 추가
+description: 가이드에 더 넣고 싶은게 있나요?
+labels: [enhancement]
+body:
+    - type: textarea
+      attributes:
+          label: 어떤 내용을 넣고싶나요?
+      validations:
+          required: true
+    - type: textarea
+      attributes:
+          label: 넣어야 하는 이유를 설명해주세요!
+          description: 대략적으로도 괜찮아요.
+      validations:
+          required: true
