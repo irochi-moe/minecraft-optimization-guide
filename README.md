@@ -13,13 +13,13 @@
 •	[Paper](https://papermc.io/downloads/paper) 또는 [Purpur](https://purpurmc.org/download/purpur) 버킷 (*다른거 쓰지 마세요 제발. 멀티스레딩, AI 최적화 등을 주장하는 버킷의 99.9%는 개소리입니다.)<br>
 
 ## 시작 플래그
-시작 플래그는 서버를 여는데 있어서 가장 중요한 시작점입니다. 그리고 이 글을 읽고있는 시점에서 당신에겐 무조건 Aikar's Flags가 정배입니다. 딴생각 하지 마세요.
+시작 플래그는 서버를 여는 데 있어서 가장 중요한 시작점입니다. 그리고 이 글을 읽고있는 시점에서 당신에겐 무조건 Aikar's Flags가 정배입니다. 딴생각하지 마세요.
 
 `java -Xms10G -Xmx10G --add-modules=jdk.incubator.vector -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true -jar paper.jar --nogui`
 
-위 시작 플래그를 복사하세요. 여러분이 수정해야할 부분은 아래 두곳입니다.
+위 시작 플래그를 복사하세요. 여러분이 수정해야 할 부분은 아래 두 곳입니다.
 
-`-Xms10G -Xmx10G`<br>사용할 메모리를 지정하는 부분입니다. Xms와 Xmx는 무조건 같아야 합니다. 자신이 서버에 10GB를 할당하려면 -Xms10G -Xmx10G를 적으면 되고, 32GB를 할당하려면 -Xms32G -Xmx32G로 집어넣으면 됩니다.
+`-Xms10G -Xmx10G`<br>사용할 메모리를 지정하는 부분입니다. Xms와 Xmx는 무조건 같아야 합니다. 자신이 서버에 10GB를 할당하려면 -Xms10G -Xmx10G를 적으면 되고, 32GB를 할당하려면 -Xms32G -Xmx32G로 집어넣으면 됩니다. 반드시 자신의 컴퓨터 또는 호스팅의 메모리 용량을 확인하세요. 호스팅이 32GB인데 서버에 32GB를 할당하는건 멍청한 짓입니다. 권장은 8GB, 메모리가 부족하다 해도 최소 4GB는 빼고 할당하세요.
 
 `paper.jar`<br>갖고있는 버킷의 파일 이름입니다. 대체로 paper-1.21.4-188.jar 처럼 생겼습니다.
 
@@ -97,9 +97,9 @@ despawn-ranges:
         hard: 56
         soft: 30
 ```
-각각의 몹들이 디스폰하는 거리를 블록 단위로 설정합니다. soft 값은 그대로 두고 hard값을 simulation distance에 맞게 조절해야 합니다. 권장 값: (simulation-distance * 16) + 8
+각각의 몹들이 디스폰하는 거리를 블록 단위로 설정합니다. soft 값은 그대로 두고 hard 값을 simulation distance에 맞게 조절해야 합니다. 권장 값: (simulation-distance * 16) + 8
 
-`per-player-mob-spawns: true`<br>몹 스폰을 플레이어 주변으로 한정하여 전체적으로 낮은 몹 갯수로도 평소와 다름없는 경험을 제공할 수 있습니다.
+`per-player-mob-spawns: true`<br>몹 스폰을 플레이어 주변으로 한정하여 전체적으로 낮은 몹 개수로도 평소와 다름없는 경험을 제공할 수 있습니다.
 
 `max-entity-collisions: 2`<br>엔티티가 서로 끼이는 최대 수를 제한합니다. 일반적으로 2가 적절합니다.
 
@@ -112,7 +112,7 @@ armor-stands:
   tick: false
   do-collision-entity-lookups: false
 ```
-갑옷거치대의 틱을 비활성화하고 충돌을 비활성화합니다. 일반적인 경우 이 두 항목은 비활성화해도 무방합니다.
+갑옷 거치대의 틱을 비활성화하고 충돌을 비활성화합니다. 일반적인 경우 이 두 항목은 비활성화해도 무방합니다.
 
 ```
 alt-item-despawn-rate:
@@ -152,7 +152,7 @@ alt-item-despawn-rate:
 
 `redstone-implementation: ALTERNATE_CURRENT`<br>레드스톤이 작동하는 알고리즘을 변경합니다. 이 설정은 레드스톤 관련 렉을 매우 크게 개선합니다.
 
-`max-auto-save-chunks-per-tick: 8`<br>한 틱에 자동으로 저장할 청크 수를 정합니다. 한번에 저장되는 청크의 절대 갯수를 낮춰 저장을 천천히 점진적으로 하게 해 전체적인 서버의 렉을 줄이는 효과가 있습니다. 다만 플레이어가 많아 청크가 너무 많은 경우 제때 저장되지 못하는 청크가 생겨 남은 저장될 때 렉을 유발할 수 있습니다. 약 20명당 8씩 늘리는걸 추천합니다.
+`max-auto-save-chunks-per-tick: 8`<br>한 틱에 자동으로 저장할 청크 수를 정합니다. 한번에 저장되는 청크의 절대 개수를 낮춰 저장을 천천히 점진적으로 하게 해 전체적인 서버의 렉을 줄이는 효과가 있습니다. 다만 플레이어가 많아 청크가 너무 많은 경우 제때 저장되지 못하는 청크가 생겨 남은 저장될 때 렉을 유발할 수 있습니다. 약 20명당 8씩 늘리는걸 추천합니다.
 
 `prevent-moving-into-unloaded-chunks: true`<br>언로드된 청크에 플레이어가 들어가지 못하게 막습니다. 언로드된 청크에 플레이어가 진입할 경우 그 청크가 로딩될때까지 나머지 작업이 중단되어 서버가 렉걸리는 결과를 낳을 수 있습니다.
 
@@ -196,7 +196,7 @@ entity-per-chunk-save-limit:
     wind_charge: 8
     wither_skull: 4
 ```
-각각의 엔티티가 청크에 저장디는 개수 제한을 설정합니다.
+각각의 엔티티가 청크에 저장되는 개수 제한을 설정합니다.
 
 
 ## 최적화는 아니지만 유용한 것들
@@ -249,6 +249,7 @@ world-settings:
 
 ## X-Ray 방지
 https://docs.papermc.io/paper/anti-xray 참고. 추후 작성 예정
+권장 engine mode: 3
 
 ## 렉을 찾는 방법
 추후 작성 예정
